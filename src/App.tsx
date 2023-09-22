@@ -1,20 +1,17 @@
 import React from 'react';
 import logo from './logo.svg';
+import LibrarySpice from './interfaces/LibrarySpice';
+import InventorySpice from './interfaces/InventorySpice';
 import { useState } from 'react';
 import './App.css';
+import LibraryPage from './LibraryPage';
 
-interface LibrarySpice {
-  name: String,
-  shelfLife: Number | null,
-  image: null,
-}
-
-interface InventorySpice {
-  spice: LibrarySpice,
-  expDate: Date | null,
-}
-
-const beginningLibrary: Array<LibrarySpice> = [
+// THIS IS PLACEHOLDER DUMMY DATA //
+//TODO: Initial database
+//TODO: localstorage
+//TODO: implement shelfLife using Date math
+//TODO: image handling
+const initLibrary: LibrarySpice[] = [
   {
     name:  "Cilantro",
     shelfLife: null,
@@ -33,16 +30,20 @@ const beginningLibrary: Array<LibrarySpice> = [
 
 ]
 
-const beginningInventory : Array<InventorySpice> = [
+
+// THIS IS PLACEHOLDER DUMMY DATA //
+//TODO: localstorage
+//TODO: implement expDate using Date math
+const initInventory : InventorySpice[] = [
   {
-    spice: beginningLibrary[1],
+    spice: initLibrary[1],
     expDate: null
   }
 ]
 
 function App() {
-  const [ library, setLibrary ] = useState<Array<LibrarySpice>>(beginningLibrary);
-  const [ inventory, setInventory ] = useState<Array<InventorySpice>>(beginningInventory);
+  const [ library, setLibrary ] = useState<LibrarySpice[]>(initLibrary);
+  const [ inventory, setInventory ] = useState<InventorySpice[]>(initInventory);
 
 
 
@@ -64,6 +65,7 @@ function App() {
         >
           Learn React
         </a>
+        <LibraryPage libraryProp={library} />
       </header>
     </div>
   );
