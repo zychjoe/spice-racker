@@ -3,8 +3,9 @@ import logo from './logo.svg';
 import LibrarySpice from './interfaces/LibrarySpice';
 import InventorySpice from './interfaces/InventorySpice';
 import { useState } from 'react';
-import './App.css';
 import LibraryPage from './LibraryPage';
+import ShoppingList from './ShoppingList';
+import './App.css';
 
 // THIS IS PLACEHOLDER DUMMY DATA //
 //TODO: Initial database
@@ -54,18 +55,8 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
         <LibraryPage libraryProp={library} />
+        <ShoppingList />
       </header>
     </div>
   );
