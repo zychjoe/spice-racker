@@ -1,4 +1,5 @@
 import LibrarySpice from '../interfaces/LibrarySpice';
+import SpiceyBtn from './SpiceyBtn';
 import { useState } from 'react';
 import './ShoppingList.css';
 
@@ -15,6 +16,7 @@ function ShoppingList(props: {libraryProp: LibrarySpice[]}) {
   return (
     <div>
       <h1>Shopping List</h1>
+      <SpiceyBtn onClick={()=> console.log('Spicey!')} btnText="Edit Shopping List" />
       {shoppingList.map((spice) => <p>{spice.name}</p>)}
     </div>
   )

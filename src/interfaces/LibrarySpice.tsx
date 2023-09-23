@@ -5,7 +5,7 @@
  * a new one to the library.
  */
 interface LibrarySpice {
-  name: String,
+  name: string,
   shelfLife: Number | null,
   image: null,
 }
