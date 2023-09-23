@@ -3,8 +3,9 @@ import logo from './logo.svg';
 import LibrarySpice from './interfaces/LibrarySpice';
 import InventorySpice from './interfaces/InventorySpice';
 import { useState } from 'react';
-import LibraryPage from './LibraryPage';
-import ShoppingList from './ShoppingList';
+import LibraryPage from './pages/LibraryPage';
+import ShoppingList from './pages/ShoppingList';
+import Inventory from './pages/Inventory';
 import './App.css';
 
 // THIS IS PLACEHOLDER DUMMY DATA //
@@ -28,6 +29,26 @@ const initLibrary: LibrarySpice[] = [
     shelfLife: null,
     image: null,
   },
+  {
+    name:  "Nutmeg",
+    shelfLife: null,
+    image: null,
+  },
+  {
+    name:  "Star Anise",
+    shelfLife: null,
+    image: null,
+  },
+  {
+    name:  "Old Bay",
+    shelfLife: null,
+    image: null,
+  },
+  {
+    name:  "Thyme, Dried",
+    shelfLife: null,
+    image: null,
+  },
 
 ]
 
@@ -46,17 +67,13 @@ function App() {
   const [ library, setLibrary ] = useState<LibrarySpice[]>(initLibrary);
   const [ inventory, setInventory ] = useState<InventorySpice[]>(initInventory);
 
-
-
-  console.log(library);
-  console.log(inventory);
-
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        <Inventory inventoryProp={inventory} />
         <LibraryPage libraryProp={library} />
-        <ShoppingList />
+        <ShoppingList libraryProp={library} />
       </header>
     </div>
   );

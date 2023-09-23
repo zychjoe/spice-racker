@@ -1,4 +1,4 @@
-import LibrarySpice from './interfaces/LibrarySpice';
+import LibrarySpice from '../interfaces/LibrarySpice';
 import './LibraryPage.css';
 
 function LibraryPage(props: {libraryProp: LibrarySpice[]}) {
