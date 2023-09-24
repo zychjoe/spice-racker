@@ -2,12 +2,12 @@ import LibrarySpice from '../interfaces/LibrarySpice';
 import SpiceyBtn from './SpiceyBtn';
 import './LibraryPage.css';
 
-function LibraryPage(props: {libraryProp: LibrarySpice[]}) {
+function LibraryPage(props: {libraryProp: LibrarySpice[], modalToggle:  React.Dispatch<React.SetStateAction<boolean>>}) {
 
   return (
     <div>
       <h1>Library</h1>
-      <SpiceyBtn onClick={()=> console.log('Spicey!')} btnText="Add to Library" />
+      <SpiceyBtn onClick={()=> props.modalToggle(true)} btnText="Add to Library" />
       {props.libraryProp.map((spice) => <p>{spice.name}</p>)}
     </div>
   )

@@ -3,12 +3,13 @@ import './SpiceyBtn.css'
 interface btnProps {
   onClick: (event: React.MouseEvent<HTMLButtonElement>) => void, 
   btnText: string,
-
 }
 
-function SpiceyBtn(props: btnProps ) {
+function SpiceyBtn(props: btnProps) {
+  const {onClick, btnText} = props;
+
   return(
-    <button onClick={props.onClick}>{props.btnText}</button>
+    <button onClick={onClick}>{btnText}</button>
   );
 }
 

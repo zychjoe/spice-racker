@@ -6,6 +6,7 @@ import LibraryPage from './pages/LibraryPage';
 import ShoppingList from './pages/ShoppingList';
 import Inventory from './pages/Inventory';
 import './App.css';
+import LibraryModal from './pages/LibraryModal';
 
 // THIS IS PLACEHOLDER DUMMY DATA //
 //TODO: Initial database
@@ -65,13 +66,15 @@ const initInventory : InventorySpice[] = [
 function App() {
   const [ library, setLibrary ] = useState<LibrarySpice[]>(initLibrary);
   const [ inventory, setInventory ] = useState<InventorySpice[]>(initInventory);
+  const [ libModalIsOpen, setLibModalIsOpen] = useState<boolean>(false);
 
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <Inventory inventoryProp={inventory} />
-        <LibraryPage libraryProp={library} />
+        <LibraryPage libraryProp={library} modalToggle = {setLibModalIsOpen} />
+        {libModalIsOpen ? <LibraryModal isOpen={libModalIsOpen} toggle={setLibModalIsOpen}/> : null}
         <ShoppingList libraryProp={library} />
       </header>
     </div>
