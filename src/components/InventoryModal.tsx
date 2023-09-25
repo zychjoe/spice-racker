@@ -5,27 +5,27 @@ import InventorySpice from "../interfaces/InventorySpice";
 import "./InventoryModal.css"
 
 interface modalProps {
-  toggle: React.Dispatch<React.SetStateAction<boolean>>,
+  setInvModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>,
   inventory: InventorySpice[],
   setInventory: React.Dispatch<React.SetStateAction<InventorySpice[]>>,
   library: LibrarySpice[],
-  toggleLibraryModal: React.Dispatch<React.SetStateAction<boolean>>,
+  setLibModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>,
 }
 
 function InventoryModal( props: modalProps ) {
 
-  const { toggle, inventory, setInventory, library, toggleLibraryModal } = props
+  const { setInvModalIsOpen, inventory, setInventory, library, setLibModalIsOpen } = props
   const [ newSpiceName, setNewSpiceName ] = useState<string>('');
 
   const onCancel = () => {
     setNewSpiceName('');
-    toggle(false);
+    setInvModalIsOpen(false);
   }
 
   const onSubmit = ()=> {
     if (!newSpiceName) {
       setNewSpiceName('');
-      toggle(false);
+      setInvModalIsOpen(false);
     }
     else {
       const newInventory = [...inventory];
@@ -36,7 +36,7 @@ function InventoryModal( props: modalProps ) {
       });
       console.log(newInventory.length)
       setInventory(newInventory);
-      toggle(false);
+      setInvModalIsOpen(false);
     }
   }
 
@@ -62,7 +62,7 @@ function InventoryModal( props: modalProps ) {
       </form>
       <div>
         <p>Or Add a Spice to the Library:</p>
-        <SpiceyBtn onClick={() => toggleLibraryModal(true)} btnText="Add Spice" />
+        <SpiceyBtn onClick={() => setLibModalIsOpen(true)} btnText="Add Spice" />
       </div>
     </div>
   );

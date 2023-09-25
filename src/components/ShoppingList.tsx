@@ -3,12 +3,14 @@ import SpiceyBtn from './SpiceyBtn';
 import { useState } from 'react';
 import './ShoppingList.css';
 
-function ShoppingList(props: {libraryProp: LibrarySpice[]}) {
+function ShoppingList(props: {library: LibrarySpice[]}) {
 
+  // THIS IS PLACEHOLDER DUMMY DATA //
+  //TODO: localstorage
   const initShoppingList = [
-    props.libraryProp[2],
-    props.libraryProp[3],
-    props.libraryProp[4],
+    props.library[2],
+    props.library[3],
+    props.library[4],
   ]
   
   const [shoppingList, setShoppingList] = useState<LibrarySpice[]>(initShoppingList);
