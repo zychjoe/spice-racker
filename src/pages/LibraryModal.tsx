@@ -5,8 +5,8 @@ import "./LibraryModal.css"
 
 interface modalProps {
   toggle: React.Dispatch<React.SetStateAction<boolean>>,
-  library: LibrarySpice[];
-  setLibrary: React.Dispatch<React.SetStateAction<LibrarySpice[]>>
+  library: LibrarySpice[],
+  setLibrary: React.Dispatch<React.SetStateAction<LibrarySpice[]>>,
 }
 
 function LibraryModal( props: modalProps ) {
