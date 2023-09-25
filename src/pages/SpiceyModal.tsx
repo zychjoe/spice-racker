@@ -1,10 +1,13 @@
+import LibrarySpice from '../interfaces/LibrarySpice';
 import SpiceyBtn from './SpiceyBtn';
 import './SpiceyModal.css';
 
 interface modalProps {
   content: string[],
-  onCancel: () => void,
-  onSubmit: () => void, 
+  onCancel: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void,
+  onSubmit: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void,
+  spiceVal: string | LibrarySpice,
+  dateInfo: Date | null;
 }
 
 function SpiceyModal(props: modalProps) {

@@ -74,7 +74,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <Inventory inventoryProp={inventory} />
         <LibraryPage libraryProp={library} modalToggle = {setLibModalIsOpen} />
-        {libModalIsOpen ? <LibraryModal isOpen={libModalIsOpen} toggle={setLibModalIsOpen}/> : null}
+        {libModalIsOpen ? <LibraryModal toggle={setLibModalIsOpen} library={library} setLibrary={setLibrary}/> : null}
         <ShoppingList libraryProp={library} />
       </header>
     </div>
