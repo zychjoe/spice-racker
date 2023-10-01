@@ -14,12 +14,47 @@ function ShoppingList(props: {library: LibrarySpice[]}) {
   ]
   
   const [shoppingList, setShoppingList] = useState<LibrarySpice[]>(initShoppingList);
+  const [canEdit, setCanEdit] = useState<boolean>(false);
+  const addToShoppingList = (newSpice: LibrarySpice) : void => {
+    const newList = [...shoppingList];
+    newList.push(newSpice);
+    setShoppingList(newList);
+  }
+
+  const removeFromShoppingList = (index: number) : void => {
+    const newList = [...shoppingList];
+    newList.splice(index, 1);
+    setShoppingList(newList);
+  }
 
   return (
     <div>
       <h1>Shopping List</h1>
-      <SpiceyBtn onClick={()=> console.log('Spicey!')} btnText="Edit Shopping List" />
-      {shoppingList.map((spice) => <p>{spice.name}</p>)}
+        {canEdit ?
+         <div>
+          {shoppingList.map((spice, index) => {
+            return (
+              <div key={index}>
+                <p>{spice.name}</p>
+                <SpiceyBtn
+                  onClick={()=> console.log('inventory: ' + spice.name)}
+                  btnText='Move to Inventory'
+                />
+                <SpiceyBtn
+                  onClick={()=> removeFromShoppingList(index)}
+                  btnText='Remove from List'
+                />
+              </div>
+            );
+              })}
+          </div>
+          :
+          <div>
+            <SpiceyBtn onClick={()=> addToShoppingList(props.library[0])} btnText="Add to Shopping List" />
+            <SpiceyBtn onClick={()=> setCanEdit(true)} btnText="Edit Shopping List" />
+            {shoppingList.map((spice, index) => <p key={index}>{spice.name}</p>)}
+          </div>
+        }
     </div>
   )
 }

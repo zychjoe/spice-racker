@@ -14,7 +14,7 @@ function LibraryPage(props: libraryProps) {
     <div>
       <h1>Library</h1>
       <SpiceyBtn onClick={()=> setLibModalIsOpen(true)} btnText="Add to Library" />
-      {library.map((spice) => <p>{spice.name}</p>)}
+      {library.map((spice, index) => <p key={index}>{spice.name}</p>)}
     </div>
   )
 }
