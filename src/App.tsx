@@ -101,7 +101,12 @@ function App() {
           /> 
           : null
         }
-        <ShoppingList library={library} />
+        <ShoppingList
+          library={library}
+          inventory={inventory}
+          setInventory={setInventory}
+          setLibModalIsOpen={setLibModalIsOpen}
+        />
       </header>
     </div>
   );

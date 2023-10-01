@@ -1,17 +1,27 @@
 import LibrarySpice from '../interfaces/LibrarySpice';
+import InventorySpice from '../interfaces/InventorySpice';
 import SpiceyBtn from './SpiceyBtn';
 import ProceedModal from './ProceedModal';
+import InventoryModal from './InventoryModal';
 import { useState } from 'react';
 import './ShoppingList.css';
 
-function ShoppingList(props: {library: LibrarySpice[]}) {
+interface shoppinglistProps {
+  library: LibrarySpice[], 
+  inventory: InventorySpice[],
+  setInventory: React.Dispatch<React.SetStateAction<InventorySpice[]>>,
+  setLibModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>,
+}
+
+function ShoppingList(props: shoppinglistProps) {
+  const { library, inventory, setInventory, setLibModalIsOpen } = props
 
   // THIS IS PLACEHOLDER DUMMY DATA //
   //TODO: localstorage
   const initShoppingList = [
-    props.library[2],
-    props.library[3],
-    props.library[4],
+    library[2],
+    library[3],
+    library[4],
   ]
   
   const [shoppingList, setShoppingList] = useState<LibrarySpice[]>(initShoppingList);
@@ -19,6 +29,10 @@ function ShoppingList(props: {library: LibrarySpice[]}) {
   const [proceedModalReveals, setProceedModalReveals] = useState<boolean[]>(
     new Array(shoppingList.length).fill(false)
   )
+  const [inventoryModalReveals, setInventoryModalReveals] = useState<boolean[]>(
+    new Array(shoppingList.length).fill(false)
+  )
+
   const addToShoppingList = (newSpice: LibrarySpice) : void => {
     const newList = [...shoppingList];
     newList.push(newSpice);
@@ -42,6 +56,12 @@ function ShoppingList(props: {library: LibrarySpice[]}) {
     handleRemoveClick(index);
   }
 
+  const handleInvModalReveal= (index: number) : void => {
+    const newInvReveals = [...inventoryModalReveals];
+    newInvReveals[index] = !newInvReveals[index];
+    setInventoryModalReveals(newInvReveals);
+  }
+
   return (
     <div>
       <h1>Shopping List</h1>
@@ -60,9 +80,22 @@ function ShoppingList(props: {library: LibrarySpice[]}) {
                   :
                     null
                   }
+                  {inventoryModalReveals[index]? 
+                    <InventoryModal
+                      setInvModalIsOpen={() => handleInvModalReveal(index)}
+                      inventory={inventory}
+                      setInventory={setInventory}
+                      library={library}
+                      setLibModalIsOpen={setLibModalIsOpen}
+                      spiceToAdd={shoppingList[index]}
+                      removeFromShoppingList={() => removeFromShoppingList(index)}
+                    />
+                  :
+                    null
+                  }
                   <p>{spice.name}</p>
                   <SpiceyBtn
-                    onClick={()=> console.log('inventory: ' + spice.name)}
+                    onClick={()=> handleInvModalReveal(index)}
                     btnText='Move to Inventory'
                   />
                   <SpiceyBtn
