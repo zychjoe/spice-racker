@@ -26,25 +26,23 @@ function InventoryModal( props: modalProps ) {
     removeFromShoppingList
   } = props
   
-  const [ newSpiceName, setNewSpiceName ] = useState<string>('');
+  const [ newSpice, setNewSpice ] = useState<LibrarySpice | undefined>(spiceToAdd? spiceToAdd : undefined);
 
   const onCancel = () => {
-    setNewSpiceName('');
+    setNewSpice(undefined);
     setInvModalIsOpen(false);
   }
 
   const onSubmit = ()=> {
 
-    if (!newSpiceName && !spiceToAdd) {
-      setNewSpiceName('');
+    if (newSpice === undefined) {
       setInvModalIsOpen(false);
     }
 
     else {
       const newInventory = [...inventory];
-      const newSpice = spiceToAdd? spiceToAdd : library.find((spice) => spice.name === newSpiceName);
       newInventory.push({
-        spice: newSpice ? newSpice : {name: "ERROR", shelfLife: null, image: null},
+        spice: newSpice,
         expDate: null,
       });
       console.log(newInventory.length)
@@ -60,11 +58,11 @@ function InventoryModal( props: modalProps ) {
     <div>
       <div>
         {spiceToAdd?
-          <p>{spiceToAdd.name}</p>
+          <p>Move {spiceToAdd.name} to Inventory?</p>
         :
           <label>
             Select a Spice: 
-            <select  onChange={(e) => setNewSpiceName(e.target.value)} >
+            <select  onChange={(e) => setNewSpice(library.find((spice) => spice.name === e.target.value))} >
               <option value=''>CHOOSE A SPICE</option>
               {library.map((spice, index) => <option key={index} value={spice.name}>{spice.name}</option>)}
             </select>

@@ -3,8 +3,9 @@ import InventorySpice from '../interfaces/InventorySpice';
 import SpiceyBtn from './SpiceyBtn';
 import ProceedModal from './ProceedModal';
 import InventoryModal from './InventoryModal';
+import ShoppingModal from './ShoppingModal';
 import { useState } from 'react';
-import './ShoppingList.css';
+import './ShoppingModal.css';
 
 interface shoppinglistProps {
   library: LibrarySpice[], 
@@ -25,6 +26,7 @@ function ShoppingList(props: shoppinglistProps) {
   ]
   
   const [shoppingList, setShoppingList] = useState<LibrarySpice[]>(initShoppingList);
+  const [shoppingModalIsOpen, setShoppingModalIsOpen] = useState<boolean>(false);
   const [canEdit, setCanEdit] = useState<boolean>(false);
   const [proceedModalReveals, setProceedModalReveals] = useState<boolean[]>(
     new Array(shoppingList.length).fill(false)
@@ -32,12 +34,6 @@ function ShoppingList(props: shoppinglistProps) {
   const [inventoryModalReveals, setInventoryModalReveals] = useState<boolean[]>(
     new Array(shoppingList.length).fill(false)
   )
-
-  const addToShoppingList = (newSpice: LibrarySpice) : void => {
-    const newList = [...shoppingList];
-    newList.push(newSpice);
-    setShoppingList(newList);
-  }
 
   const removeFromShoppingList = (index: number) : void => {
     const newList = [...shoppingList];
@@ -67,6 +63,20 @@ function ShoppingList(props: shoppinglistProps) {
       <h1>Shopping List</h1>
         {canEdit ?
           <div>
+            <SpiceyBtn
+              onClick={()=> setShoppingModalIsOpen(true)}
+              btnText="Add to Shopping List"
+            />
+            {shoppingModalIsOpen?
+              <ShoppingModal
+                library={library}
+                shoppingList={shoppingList}
+                setShoppingList={setShoppingList}
+                setShoppingModalIsOpen={setShoppingModalIsOpen}
+              />
+            :
+              null
+            }
             {shoppingList.map((spice, index) => {
               return (
                 <div key={index}>
@@ -112,10 +122,6 @@ function ShoppingList(props: shoppinglistProps) {
           </div>
         :
           <div>
-            <SpiceyBtn
-              onClick={()=> addToShoppingList(props.library[0])}
-              btnText="Add to Shopping List"
-            />
             <SpiceyBtn
               onClick={()=> setCanEdit(true)}
               btnText="Edit Shopping List"
