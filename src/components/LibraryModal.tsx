@@ -23,13 +23,13 @@ function LibraryModal( props: modalProps ) {
     if (!newSpice) {
       setNewSpice('');
       console.log(library.length)
-      toggle(false);
+      toggle(false); 
     }
     else {
       const newLibrary = [...library];
       newLibrary.push({
         name: newSpice,
-        shelfLife: null,
+        shelfLife: undefined,
         image: null,
       });
       console.log(newLibrary.length)

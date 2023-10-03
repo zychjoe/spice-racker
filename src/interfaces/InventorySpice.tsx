@@ -1,3 +1,4 @@
+import { MomentInput } from "moment";
 import LibrarySpice from "./LibrarySpice";
 
 /**
@@ -7,7 +8,7 @@ import LibrarySpice from "./LibrarySpice";
  */
 interface InventorySpice {
   spice: LibrarySpice,
-  expDate: Date | null,
+  expDate: MomentInput | null,
 }
 
 export default InventorySpice;

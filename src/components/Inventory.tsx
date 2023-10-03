@@ -14,7 +14,7 @@ function Inventory(props: inventoryProps) {
     <div>
       <h1>Inventory</h1>
       <SpiceyBtn onClick={() => setInvModalIsOpen(true)} btnText="Add a Spice" />
-      {inventory.map((spice, index) => <p key={index}>{spice.spice.name}</p>)}
+      {inventory.map((spice, index) => <div><p key={index}>{spice.spice.name}</p><SpiceyBtn onClick={()=>console.log(spice.expDate)} btnText="exp" /></div>)}
     </div>
   );
 }

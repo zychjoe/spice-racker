@@ -6,8 +6,10 @@ import LibraryModal from './components/LibraryModal';
 import InventoryModal from './components/InventoryModal';
 import LibrarySpice from './interfaces/LibrarySpice';
 import InventorySpice from './interfaces/InventorySpice';
+import moment from 'moment';
 import logo from './logo.svg';
 import './App.css';
+import SpiceyBtn from './components/SpiceyBtn';
 
 // THIS IS PLACEHOLDER DUMMY DATA //
 //TODO: Initial database
@@ -17,37 +19,37 @@ import './App.css';
 const initLibrary: LibrarySpice[] = [
   {
     name:  "Cilantro",
-    shelfLife: null,
+    shelfLife: {days: undefined, months: undefined, years: 2 },
     image: null,
   },
   {
     name:  "Oregano",
-    shelfLife: null,
+    shelfLife: undefined,
     image: null,
   },
   {
     name:  "Cinnamon",
-    shelfLife: null,
+    shelfLife: {days: 2, months: undefined, years: 3 },
     image: null,
   },
   {
     name:  "Nutmeg",
-    shelfLife: null,
+    shelfLife: {days: undefined, months: 4, years: undefined },
     image: null,
   },
   {
     name:  "Star Anise",
-    shelfLife: null,
+    shelfLife: {days: 1, months: 2, years: 3 },
     image: null,
   },
   {
     name:  "Old Bay",
-    shelfLife: null,
+    shelfLife: undefined,
     image: null,
   },
   {
     name:  "Thyme, Dried",
-    shelfLife: null,
+    shelfLife: undefined,
     image: null,
   },
 
@@ -60,7 +62,7 @@ const initLibrary: LibrarySpice[] = [
 const initInventory : InventorySpice[] = [
   {
     spice: initLibrary[1],
-    expDate: null
+    expDate: moment(),
   }
 ]
 
@@ -80,6 +82,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <SpiceyBtn onClick={()=>console.log(moment().add(2, 'years'))} btnText='add 1 day' />
         <img src={logo} className="App-logo" alt="logo" />
         <Inventory inventory={inventory} setInvModalIsOpen={setInvModalIsOpen} />
         {invModalIsOpen ?
