@@ -36,28 +36,19 @@ function InventoryModal( props: modalProps ) {
 
   const setExpDateByShelfLife = ()  : MomentInput => {
     if (!newSpice || !newSpice.shelfLife) {
-      console.log("BUG OUT");
       return null;
     }
     else {
       const today = moment();
       if (newSpice.shelfLife.days) {
         today.add(newSpice.shelfLife.days, 'days');
-        console.log('SL days: ' + newSpice.shelfLife.days);
-        console.log(today);
       }
       if (newSpice.shelfLife.months) {
         today.add(newSpice.shelfLife.months, 'months');
-        console.log('SL mos: ' + newSpice.shelfLife.months);
-        console.log(today);
       }
       if (newSpice.shelfLife.years) {
         today.add(newSpice.shelfLife.years, 'years');
-        console.log('SL years: ' + newSpice.shelfLife.years);
-        console.log('Today year: ');
-        console.log(today);
       }
-      console.log('Bout to set!')
       return(today);
     }
   }
@@ -71,13 +62,10 @@ function InventoryModal( props: modalProps ) {
     else {
       const newInventory = [...inventory];
       const newExpDate = setExpDateByShelfLife();
-      console.log(newExpDate);
-      console.log('^^^^^^^^^^^^^')
       newInventory.push({
         spice: newSpice,
         expDate: newExpDate,
       });
-      console.log(newInventory.length)
       setInventory(newInventory);
       setInvModalIsOpen(false);
       if (removeFromShoppingList) {
