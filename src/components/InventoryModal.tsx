@@ -28,17 +28,16 @@ function InventoryModal( props: modalProps ) {
   } = props;
   
   const [ newSpice, setNewSpice ] = useState<LibrarySpice | undefined>(spiceToAdd? spiceToAdd : undefined);
-  const [ newExpDate, setNewExpDate ] = useState<MomentInput | null>(null);
 
   const onCancel = () => {
     setNewSpice(undefined);
     setInvModalIsOpen(false);
   }
 
-  const setExpDateByShelfLife = () => {
+  const setExpDateByShelfLife = ()  : MomentInput => {
     if (!newSpice || !newSpice.shelfLife) {
       console.log("BUG OUT");
-      setNewExpDate(null);
+      return null;
     }
     else {
       const today = moment();
@@ -59,7 +58,7 @@ function InventoryModal( props: modalProps ) {
         console.log(today);
       }
       console.log('Bout to set!')
-      setNewExpDate(today.toObject());
+      return(today);
     }
   }
 
@@ -71,7 +70,7 @@ function InventoryModal( props: modalProps ) {
 
     else {
       const newInventory = [...inventory];
-      setExpDateByShelfLife();
+      const newExpDate = setExpDateByShelfLife();
       console.log(newExpDate);
       console.log('^^^^^^^^^^^^^')
       newInventory.push({
