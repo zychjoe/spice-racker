@@ -1,5 +1,3 @@
-import ShelfLife from "./ShelfLife";
-
 /**
  * Obj storing information about the spice in general.
  * When creating an instance of a spice in an inventory,
@@ -8,7 +6,7 @@ import ShelfLife from "./ShelfLife";
  */
 interface LibrarySpice {
   name: string,
-  shelfLife: ShelfLife | undefined,
+  shelfLife: moment.Duration | undefined,
   image: null,
 }
 

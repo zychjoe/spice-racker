@@ -1,6 +1,7 @@
 import { useState } from "react";
 import SpiceyBtn from "./SpiceyBtn";
 import LibrarySpice from "../interfaces/LibrarySpice";
+import moment from "moment";
 import "./LibraryModal.css"
 
 interface modalProps {
@@ -13,6 +14,7 @@ function LibraryModal( props: modalProps ) {
 
   const { toggle, library, setLibrary } = props
   const [ newSpice, setNewSpice ] = useState<string>('');
+  const [ newDuration, setNewDuration ] = useState<moment.Duration>(moment.duration(undefined))
 
   const onCancel = () => {
     setNewSpice('');
@@ -29,7 +31,7 @@ function LibraryModal( props: modalProps ) {
       const newLibrary = [...library];
       newLibrary.push({
         name: newSpice,
-        shelfLife: undefined,
+        shelfLife: newDuration,
         image: null,
       });
       console.log(newLibrary.length)

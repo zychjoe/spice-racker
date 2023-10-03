@@ -19,7 +19,7 @@ import SpiceyBtn from './components/SpiceyBtn';
 const initLibrary: LibrarySpice[] = [
   {
     name:  "Cilantro",
-    shelfLife: {days: undefined, months: undefined, years: 2 },
+    shelfLife: moment.duration({years: 2 }),
     image: null,
   },
   {
@@ -29,17 +29,17 @@ const initLibrary: LibrarySpice[] = [
   },
   {
     name:  "Cinnamon",
-    shelfLife: {days: 2, months: undefined, years: 3 },
+    shelfLife: moment.duration({years: 2 }),
     image: null,
   },
   {
     name:  "Nutmeg",
-    shelfLife: {days: undefined, months: 4, years: undefined },
+    shelfLife: moment.duration({years: 2 }),
     image: null,
   },
   {
     name:  "Star Anise",
-    shelfLife: {days: 1, months: 2, years: 3 },
+    shelfLife: moment.duration({years: 2 }),
     image: null,
   },
   {

@@ -38,19 +38,10 @@ function InventoryModal( props: modalProps ) {
     if (!newSpice || !newSpice.shelfLife) {
       return null;
     }
-    else {
-      const today = moment();
-      if (newSpice.shelfLife.days) {
-        today.add(newSpice.shelfLife.days, 'days');
-      }
-      if (newSpice.shelfLife.months) {
-        today.add(newSpice.shelfLife.months, 'months');
-      }
-      if (newSpice.shelfLife.years) {
-        today.add(newSpice.shelfLife.years, 'years');
-      }
-      return(today);
-    }
+    
+    const today = moment();
+    today.add(newSpice.shelfLife);
+    return(today);
   }
 
   const onSubmit = (): void => {
