@@ -20,15 +20,37 @@ function ShelfLifePicker (props: pickerProps) {
     if (shelfLifeDuration) {
       newDuration = shelfLifeDuration;
     }
-    
-    newDuration.add(selection, period);
+    //TODO, needs to change, not just add!!
+    switch (period) {
+      case 'days':
+        newDuration = moment.duration({
+          days: selection,
+          months: newDuration.months(),
+          years: newDuration.years(), 
+        })
+        break;
+      case 'months':
+        newDuration = moment.duration({
+          days: newDuration.days(),
+          months: selection,
+          years: newDuration.years(), 
+        })
+        break;
+      case 'years':
+        newDuration = moment.duration({
+          days: newDuration.days(),
+          months: newDuration.months(),
+          years: selection, 
+        })
+        break;
+    }
     setShelfLifeDuration(newDuration);
     console.log(newDuration);
   }
 
   return (
     <div>
-      <h1>What is the expected shelf life of this spice?</h1>
+      <p>What is the expected shelf life of this spice?</p>
       <div>
         <p>Days:</p>
         <select  onChange={(e) => onSelectChange(parseInt(e.target.value), 'days')} >

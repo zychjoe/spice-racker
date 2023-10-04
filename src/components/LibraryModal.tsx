@@ -3,6 +3,7 @@ import SpiceyBtn from "./SpiceyBtn";
 import LibrarySpice from "../interfaces/LibrarySpice";
 import moment from "moment";
 import "./LibraryModal.css"
+import ShelfLifePicker from "./ShelfLifePicker";
 
 interface modalProps {
   toggle: React.Dispatch<React.SetStateAction<boolean>>,
@@ -41,7 +42,7 @@ function LibraryModal( props: modalProps ) {
   }
 
   return (
-    <form>
+    <div>
       <div>
         <label>
           Spice: 
@@ -49,14 +50,11 @@ function LibraryModal( props: modalProps ) {
         </label>
       </div>
       <div>
-        <label>
-          Shelf Life: 
-          <input disabled={true} />
-        </label>
+        <ShelfLifePicker shelfLifeDuration={newDuration} setShelfLifeDuration={setNewDuration} />
       </div>
       <SpiceyBtn onClick={onCancel} btnText={"Cancel"}/>
       <SpiceyBtn onClick={onSubmit} btnText={"Submit"}/>
-    </form>
+    </div>
   );
 }
 
