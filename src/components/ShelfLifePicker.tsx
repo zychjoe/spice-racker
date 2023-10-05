@@ -20,7 +20,6 @@ function ShelfLifePicker (props: pickerProps) {
     if (shelfLifeDuration) {
       newDuration = shelfLifeDuration;
     }
-    //TODO, needs to change, not just add!!
     switch (period) {
       case 'days':
         newDuration = moment.duration({

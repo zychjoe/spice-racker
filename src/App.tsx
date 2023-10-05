@@ -10,6 +10,8 @@ import moment from 'moment';
 import logo from './logo.svg';
 import './App.css';
 import SpiceyBtn from './components/SpiceyBtn';
+import Display from './interfaces/Display';
+import WelcomePage from './components/WelcomePage';
 
 // THIS IS PLACEHOLDER DUMMY DATA //
 //TODO: Initial database
@@ -73,7 +75,7 @@ function App() {
   const [ library, setLibrary ] = useState<LibrarySpice[]>(initLibrary);
   const [ inventory, setInventory ] = useState<InventorySpice[]>(initInventory);
   const [ libModalIsOpen, setLibModalIsOpen] = useState<boolean>(false);
-  const [ invModalIsOpen, setInvModalIsOpen] = useState<boolean>(false);
+  const [ display, setDisplay ] = useState<Display>(0);
 
 
 
@@ -82,34 +84,51 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <SpiceyBtn onClick={()=>console.log(moment().add(2, 'years'))} btnText='add 1 day' />
         <img src={logo} className="App-logo" alt="logo" />
-        <Inventory inventory={inventory} setInvModalIsOpen={setInvModalIsOpen} />
-        {invModalIsOpen ?
-          <InventoryModal
-            setInvModalIsOpen={setInvModalIsOpen}
+        { display === 0 ? <WelcomePage setDisplay={setDisplay} /> : null}
+        { display === 1 ? 
+          <div>
+            <Inventory
+              inventory={inventory}
+              setInventory={setInventory}
+              library={library}
+              backToWelcomePage={() => setDisplay(0)}
+              setLibModalIsOpen={setLibModalIsOpen}
+            />
+          </div>
+          :
+          null
+        }
+        { display === 2 ?       
+          <ShoppingList
+            library={library}
             inventory={inventory}
             setInventory={setInventory}
-            library={library}
             setLibModalIsOpen={setLibModalIsOpen}
+            backToWelcomePage={() => setDisplay(0)}
           />
-          : null
+          :
+          null
         }
-        <LibraryPage library={library} setLibModalIsOpen = {setLibModalIsOpen} />
-        {libModalIsOpen ? 
-          <LibraryModal
-            toggle={setLibModalIsOpen}
-            library={library}
-            setLibrary={setLibrary}
-          /> 
-          : null
+        { display === 3 ?
+          <div>
+            <LibraryPage
+              library={library}
+              setLibModalIsOpen = {setLibModalIsOpen}
+              backToWelcomePage={() => setDisplay(0)}
+            />
+            {libModalIsOpen ? 
+              <LibraryModal
+                toggle={setLibModalIsOpen}
+                library={library}
+                setLibrary={setLibrary}
+              /> 
+              : null
+            }
+          </div>
+          :
+          null
         }
-        <ShoppingList
-          library={library}
-          inventory={inventory}
-          setInventory={setInventory}
-          setLibModalIsOpen={setLibModalIsOpen}
-        />
       </header>
     </div>
   );

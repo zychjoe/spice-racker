@@ -12,10 +12,11 @@ interface shoppinglistProps {
   inventory: InventorySpice[],
   setInventory: React.Dispatch<React.SetStateAction<InventorySpice[]>>,
   setLibModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>,
+  backToWelcomePage: () => void,
 }
 
 function ShoppingList(props: shoppinglistProps) {
-  const { library, inventory, setInventory, setLibModalIsOpen } = props
+  const { library, inventory, setInventory, setLibModalIsOpen, backToWelcomePage } = props
 
   // THIS IS PLACEHOLDER DUMMY DATA //
   //TODO: localstorage
@@ -129,6 +130,7 @@ function ShoppingList(props: shoppinglistProps) {
             {shoppingList.map((spice, index) => <p key={index}>{spice.name}</p>)}
           </div>
         }
+      <SpiceyBtn onClick={backToWelcomePage} btnText="Back" />
     </div>
   )
 }
