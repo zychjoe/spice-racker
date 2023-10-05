@@ -81,54 +81,59 @@ function App() {
 
   /////////////////////////////////////////////////////////////////////////////
   /////////////////////            RENDER             /////////////////////////
+
+  let displayedElement;
+
+  switch(display){
+    case 1:
+      displayedElement=
+        <Inventory
+          inventory={inventory}
+          setInventory={setInventory}
+          library={library}
+          backToWelcomePage={() => setDisplay(0)}
+          setLibModalIsOpen={setLibModalIsOpen} //TODO: eliminate
+        />
+      break;
+    case 2:
+      displayedElement=
+        <ShoppingList
+          library={library}
+          inventory={inventory}
+          setInventory={setInventory}
+          setLibModalIsOpen={setLibModalIsOpen}
+          backToWelcomePage={() => setDisplay(0)}
+        />
+      break;
+    case 3:
+      displayedElement=
+        <div>
+          <LibraryPage
+            library={library}
+            setLibModalIsOpen = {setLibModalIsOpen}
+            backToWelcomePage={() => setDisplay(0)}
+          />
+          {libModalIsOpen ? 
+            <LibraryModal
+              toggle={setLibModalIsOpen}
+              library={library}
+              setLibrary={setLibrary}
+            /> 
+            : null
+          }
+        </div>
+      break;
+    case 0:
+    default:
+      displayedElement =  <WelcomePage setDisplay={setDisplay} />
+      break;
+  }
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        { display === 0 ? <WelcomePage setDisplay={setDisplay} /> : null}
-        { display === 1 ? 
-          <div>
-            <Inventory
-              inventory={inventory}
-              setInventory={setInventory}
-              library={library}
-              backToWelcomePage={() => setDisplay(0)}
-              setLibModalIsOpen={setLibModalIsOpen}
-            />
-          </div>
-          :
-          null
-        }
-        { display === 2 ?       
-          <ShoppingList
-            library={library}
-            inventory={inventory}
-            setInventory={setInventory}
-            setLibModalIsOpen={setLibModalIsOpen}
-            backToWelcomePage={() => setDisplay(0)}
-          />
-          :
-          null
-        }
-        { display === 3 ?
-          <div>
-            <LibraryPage
-              library={library}
-              setLibModalIsOpen = {setLibModalIsOpen}
-              backToWelcomePage={() => setDisplay(0)}
-            />
-            {libModalIsOpen ? 
-              <LibraryModal
-                toggle={setLibModalIsOpen}
-                library={library}
-                setLibrary={setLibrary}
-              /> 
-              : null
-            }
-          </div>
-          :
-          null
-        }
+        {displayedElement}
       </header>
     </div>
   );
