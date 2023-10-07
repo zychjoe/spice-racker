@@ -7,7 +7,6 @@ import InventorySpice from './interfaces/InventorySpice';
 import Display from './interfaces/Display';
 import WelcomePage from './components/WelcomePage';
 import moment from 'moment';
-import logo from './logo.svg';
 import './App.css';
 
 // THIS IS PLACEHOLDER DUMMY DATA //
@@ -115,7 +114,6 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         {displayedElement}
       </header>
     </div>

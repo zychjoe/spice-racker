@@ -1,3 +1,10 @@
+
+
+@font-face {
+  font-family: 'remissis';
+  src: url(../public/remissis/remissis_sb.otf);
+}
+
 .App {
   text-align: center;
 }
@@ -14,13 +21,16 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-image: url(../public/spiceracker_bg.png);
+  background-size: 50%;
+  background-repeat: repeat;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
+  font-family: 'remissis';
   color: white;
 }
 
@@ -35,4 +45,21 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+@media only screen and (max-width: 768px) {
+
+  .App-header {
+    background-image: url(../public/spiceracker_bg.png);
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    font-family: 'remissis';
+    color: white;
+  }
+
 }

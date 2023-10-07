@@ -16,6 +16,7 @@ function ShoppingModal(props: modalProps) {
 
   const [ newSpice, setNewSpice ] = useState<LibrarySpice | undefined>(undefined);
 
+  //TODO: better fail condition
   const onSubmit = () => {
     if (newSpice) {
       const newShoppingList = [...shoppingList];

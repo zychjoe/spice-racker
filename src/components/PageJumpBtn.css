@@ -1,0 +1,58 @@
+
+
+.page-jump-btn {
+  color: black;
+  height: 150px;
+  width: 500px;
+  border-radius: 1%;
+  background-color: white;
+  margin: 30px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  justify-content: space-between;
+}
+
+.spacer {
+  width: 100px;
+}
+
+.button-text {
+  text-align: center;
+}
+
+.button-icon {
+  width: 100px;
+  height: 100px;
+}
+
+@media only screen and (max-width: 768px) {
+
+  .page-jump-btn {
+    color: black;
+    height: 10vh;
+    min-height: 15vw;
+    width: 80vw;
+    border-radius: 1%;
+    background-color: white;
+    margin: 30px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    justify-content: space-between;
+  }
+  
+  .spacer {
+    width: 15vw;
+  }
+  
+  .button-text {
+    text-align: center;
+  }
+
+  .button-icon {
+    width: 15vw;
+    height: 15vw;
+  }
+  
+  }
