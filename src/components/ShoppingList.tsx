@@ -9,14 +9,14 @@ import './ShoppingModal.css';
 
 interface shoppinglistProps {
   library: LibrarySpice[], 
+  setLibrary: React.Dispatch<React.SetStateAction<LibrarySpice[]>>,
   inventory: InventorySpice[],
   setInventory: React.Dispatch<React.SetStateAction<InventorySpice[]>>,
-  setLibModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>,
   backToWelcomePage: () => void,
 }
 
 function ShoppingList(props: shoppinglistProps) {
-  const { library, inventory, setInventory, setLibModalIsOpen, backToWelcomePage } = props
+  const { library, setLibrary, inventory, setInventory, backToWelcomePage } = props
 
   // THIS IS PLACEHOLDER DUMMY DATA //
   //TODO: localstorage
@@ -97,7 +97,7 @@ function ShoppingList(props: shoppinglistProps) {
                       inventory={inventory}
                       setInventory={setInventory}
                       library={library}
-                      setLibModalIsOpen={setLibModalIsOpen}
+                      setLibrary={setLibrary}
                       spiceToAdd={shoppingList[index]}
                       removeFromShoppingList={() => removeFromShoppingList(index)}
                     />

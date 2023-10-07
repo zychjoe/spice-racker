@@ -6,27 +6,27 @@ import "./LibraryModal.css"
 import ShelfLifePicker from "./ShelfLifePicker";
 
 interface modalProps {
-  toggle: React.Dispatch<React.SetStateAction<boolean>>,
+  setLibModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>,
   library: LibrarySpice[],
   setLibrary: React.Dispatch<React.SetStateAction<LibrarySpice[]>>,
 }
 
 function LibraryModal( props: modalProps ) {
 
-  const { toggle, library, setLibrary } = props
+  const { setLibModalIsOpen, library, setLibrary } = props
   const [ newSpice, setNewSpice ] = useState<string>('');
   const [ newDuration, setNewDuration ] = useState<moment.Duration>(moment.duration(undefined))
 
   const onCancel = () => {
     setNewSpice('');
-    toggle(false);
+    setLibModalIsOpen(false);
   }
 
   const onSubmit = ()=> {
     if (!newSpice) {
       setNewSpice('');
       console.log(library.length)
-      toggle(false); 
+      setLibModalIsOpen(false); 
     }
     else {
       const newLibrary = [...library];
@@ -37,7 +37,7 @@ function LibraryModal( props: modalProps ) {
       });
       console.log(newLibrary.length)
       setLibrary(newLibrary);
-      toggle(false);
+      setLibModalIsOpen(false);
     }
   }
 

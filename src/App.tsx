@@ -2,16 +2,13 @@ import { useState } from 'react';
 import Inventory from './components/Inventory';
 import LibraryPage from './components/LibraryPage';
 import ShoppingList from './components/ShoppingList';
-import LibraryModal from './components/LibraryModal';
-import InventoryModal from './components/InventoryModal';
 import LibrarySpice from './interfaces/LibrarySpice';
 import InventorySpice from './interfaces/InventorySpice';
+import Display from './interfaces/Display';
+import WelcomePage from './components/WelcomePage';
 import moment from 'moment';
 import logo from './logo.svg';
 import './App.css';
-import SpiceyBtn from './components/SpiceyBtn';
-import Display from './interfaces/Display';
-import WelcomePage from './components/WelcomePage';
 
 // THIS IS PLACEHOLDER DUMMY DATA //
 //TODO: Initial database
@@ -74,14 +71,10 @@ function App() {
   /////////////////////       STATE DEFINITIONS       /////////////////////////
   const [ library, setLibrary ] = useState<LibrarySpice[]>(initLibrary);
   const [ inventory, setInventory ] = useState<InventorySpice[]>(initInventory);
-  const [ libModalIsOpen, setLibModalIsOpen] = useState<boolean>(false);
   const [ display, setDisplay ] = useState<Display>(0);
-
-
 
   /////////////////////////////////////////////////////////////////////////////
   /////////////////////            RENDER             /////////////////////////
-
   let displayedElement;
 
   switch(display){
@@ -91,37 +84,27 @@ function App() {
           inventory={inventory}
           setInventory={setInventory}
           library={library}
+          setLibrary={setLibrary}
           backToWelcomePage={() => setDisplay(0)}
-          setLibModalIsOpen={setLibModalIsOpen} //TODO: eliminate
         />
       break;
     case 2:
       displayedElement=
         <ShoppingList
           library={library}
+          setLibrary={setLibrary}
           inventory={inventory}
           setInventory={setInventory}
-          setLibModalIsOpen={setLibModalIsOpen}
           backToWelcomePage={() => setDisplay(0)}
         />
       break;
     case 3:
       displayedElement=
-        <div>
-          <LibraryPage
-            library={library}
-            setLibModalIsOpen = {setLibModalIsOpen}
-            backToWelcomePage={() => setDisplay(0)}
-          />
-          {libModalIsOpen ? 
-            <LibraryModal
-              toggle={setLibModalIsOpen}
-              library={library}
-              setLibrary={setLibrary}
-            /> 
-            : null
-          }
-        </div>
+        <LibraryPage
+          library={library}
+          setLibrary={setLibrary}
+          backToWelcomePage={() => setDisplay(0)}
+        />
       break;
     case 0:
     default:

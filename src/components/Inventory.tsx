@@ -9,12 +9,12 @@ interface inventoryProps {
   inventory: InventorySpice[],
   setInventory: React.Dispatch<React.SetStateAction<InventorySpice[]>>,
   library: LibrarySpice[],
+  setLibrary: React.Dispatch<React.SetStateAction<LibrarySpice[]>>,
   backToWelcomePage: () => void,
-  setLibModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>,
 }
 
 function Inventory(props: inventoryProps) {
-  const { inventory, setInventory, library, backToWelcomePage, setLibModalIsOpen } = props;
+  const { inventory, setInventory, library, setLibrary, backToWelcomePage } = props;
   const [ invModalIsOpen, setInvModalIsOpen] = useState<boolean>(false);
 
   let modalDisplay;
@@ -26,7 +26,7 @@ function Inventory(props: inventoryProps) {
         inventory={inventory}
         setInventory={setInventory}
         library={library}
-        setLibModalIsOpen={setLibModalIsOpen} //TODO move libmodal logic into invmodal
+        setLibrary={setLibrary}
       />
   }
 

@@ -4,13 +4,14 @@ import LibrarySpice from "../interfaces/LibrarySpice";
 import InventorySpice from "../interfaces/InventorySpice";
 import "./InventoryModal.css"
 import moment, { MomentInput } from "moment";
+import LibraryModal from "./LibraryModal";
 
 interface modalProps {
   setInvModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>,
   inventory: InventorySpice[],
   setInventory: React.Dispatch<React.SetStateAction<InventorySpice[]>>,
   library: LibrarySpice[],
-  setLibModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>,
+  setLibrary: React.Dispatch<React.SetStateAction<LibrarySpice[]>>,
   spiceToAdd? : LibrarySpice, //Used when called by ShoppingList
   removeFromShoppingList?: () => void, //Used when called by ShoppingList
 }
@@ -22,12 +23,13 @@ function InventoryModal( props: modalProps ) {
     inventory,
     setInventory,
     library,
-    setLibModalIsOpen,
+    setLibrary,
     spiceToAdd,
     removeFromShoppingList
   } = props;
   
   const [ newSpice, setNewSpice ] = useState<LibrarySpice | undefined>(spiceToAdd? spiceToAdd : undefined);
+  const [ libModalIsOpen, setLibModalIsOpen] = useState<boolean>(false);
 
   const onCancel = () => {
     setNewSpice(undefined);
@@ -65,37 +67,50 @@ function InventoryModal( props: modalProps ) {
     }
   }
 
+  let spiceSelection;
+  let libraryOption;
+  if (spiceToAdd) {
+    spiceSelection = <p>Move {spiceToAdd.name} to Inventory?</p>;
+    libraryOption = null;
+  }
+  else {
+    spiceSelection = 
+      <label>
+        Select a Spice: 
+        <select  onChange={(e) => setNewSpice(library.find((spice) => spice.name === e.target.value))} >
+          <option value=''>CHOOSE A SPICE</option>
+          {library.map((spice, index) => <option key={index} value={spice.name}>{spice.name}</option>)}
+        </select>
+      </label>;
+    if (libModalIsOpen) {
+      libraryOption = 
+        <LibraryModal 
+          setLibModalIsOpen={setLibModalIsOpen}
+          library={library}
+          setLibrary={setLibrary}
+        />
+    }
+    else{
+      libraryOption = 
+        <div>
+          <p>Or Add a Spice to the Library:</p>
+          <SpiceyBtn onClick={() => setLibModalIsOpen(true)} btnText="Add Spice" />
+        </div>
+    }
+  }
+
   return (
     <div>
-      <div>
-        {spiceToAdd?
-          <p>Move {spiceToAdd.name} to Inventory?</p>
-        :
-          <label>
-            Select a Spice: 
-            <select  onChange={(e) => setNewSpice(library.find((spice) => spice.name === e.target.value))} >
-              <option value=''>CHOOSE A SPICE</option>
-              {library.map((spice, index) => <option key={index} value={spice.name}>{spice.name}</option>)}
-            </select>
-          </label>
-        }
-      </div>
+      {spiceSelection}
       <div>
         <label>
           Expiration Date: 
           <input disabled={true} />
         </label>
       </div>
+      {libraryOption}
       <SpiceyBtn onClick={onCancel} btnText={"Cancel"}/>
       <SpiceyBtn onClick={onSubmit} btnText={"Submit"}/>
-      {spiceToAdd?
-        null
-      :
-        <div>
-          <p>Or Add a Spice to the Library:</p>
-          <SpiceyBtn onClick={() => setLibModalIsOpen(true)} btnText="Add Spice" />
-        </div>
-      }
     </div>
   );
 }
