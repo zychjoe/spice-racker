@@ -1,0 +1,14 @@
+.shelf-life-picker {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+}
+
+.picker-slot {
+  font-size: 10pt;
+  width: 20vw;
+  flex-direction: column;
+  margin-left: 5px;
+  margin-right: 5px;
+}

@@ -48,28 +48,30 @@ function ShelfLifePicker (props: pickerProps) {
   }
 
   return (
-    <div className="shelf-life-picker">
+    <div className="picker-container">
       <p>What is the expected shelf life of this spice?</p>
-      <div className="picker-slot">
-        <p>Days:</p>
-        <select  onChange={(e) => onSelectChange(parseInt(e.target.value), 'days')} >
-          <option value={0}>0</option>
-          {dayRange.map((day, index) => <option key={index} value={day}>{day}</option>)}
-        </select>
-      </div>
-      <div className="picker-slot">
-        <p>Months:</p>
-        <select  onChange={(e) => onSelectChange(parseInt(e.target.value), 'months')} >
-          <option value={0}>0</option>
-          {monthRange.map((month, index) => <option key={index} value={month}>{month}</option>)}
-        </select>
-      </div>
-      <div className="picker-slot">
-        <p>Years:</p>
-        <select  onChange={(e) => onSelectChange(parseInt(e.target.value), 'years')} >
-          <option value={0}>0</option>
-          {yearRange.map((year, index) => <option key={index} value={year}>{year}</option>)}
-        </select>
+      <div className="shelf-life-picker">
+        <div className="picker-slot">
+          <p>Days:</p>
+          <select  onChange={(e) => onSelectChange(parseInt(e.target.value), 'days')} >
+            <option value={0}>0</option>
+            {dayRange.map((day, index) => <option key={index} value={day}>{day}</option>)}
+          </select>
+        </div>
+        <div className="picker-slot">
+          <p>Months:</p>
+          <select  onChange={(e) => onSelectChange(parseInt(e.target.value), 'months')} >
+            <option value={0}>0</option>
+            {monthRange.map((month, index) => <option key={index} value={month}>{month}</option>)}
+          </select>
+        </div>
+        <div className="picker-slot">
+          <p>Years:</p>
+          <select  onChange={(e) => onSelectChange(parseInt(e.target.value), 'years')} >
+            <option value={0}>0</option>
+            {yearRange.map((year, index) => <option key={index} value={year}>{year}</option>)}
+          </select>
+        </div>
       </div>
     </div>
   )

@@ -42,18 +42,19 @@ function LibraryModal( props: modalProps ) {
   }
 
   return (
-    <div className="library-modal">
-      <div>
-        <label>
-          Spice: 
+    <div className="modal">
+      <h1>Add a Spice</h1>
+      <div className="library-modal-content">
+        <div className="spice-name-input">
+          <p> Spice Name: </p>
           <input value={newSpice} onChange={(e) => setNewSpice(e.target.value)} ></input>
-        </label>
-      </div>
-      <div>
+        </div>
         <ShelfLifePicker shelfLifeDuration={newDuration} setShelfLifeDuration={setNewDuration} />
       </div>
-      <SpiceyBtn onClick={onCancel} btnText={"Cancel"} icon='cancel' />
-      <SpiceyBtn onClick={onSubmit} btnText={"Submit"} icon='done' />
+      <div className="cancel-submit-bar">
+        <SpiceyBtn onClick={onCancel} btnText={"Cancel"} icon='cancel' />
+        <SpiceyBtn onClick={onSubmit} btnText={"Submit"} icon='done' />
+      </div>
     </div>
   );
 }
