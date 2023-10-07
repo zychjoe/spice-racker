@@ -1,7 +1,6 @@
-import SpiceyBtn from './SpiceyBtn';
 import Display from '../interfaces/Display';
-import './WelcomePage.css';
 import PageJumpBtn from './PageJumpBtn';
+import './WelcomePage.css';
 
 interface welcomeProps {
   setDisplay: React.Dispatch<React.SetStateAction<Display>>,
@@ -12,21 +11,20 @@ function WelcomePage(props: welcomeProps) {
 
   return (
     <div>
-      <h1>Welcome!</h1>
       <PageJumpBtn
         onClick={() => setDisplay(1)}
         btnText='Inventory'
-        icon='inventory_icon.png'
+        pageToLink='inventory'
       />
       <PageJumpBtn
         onClick={() => setDisplay(2)}
         btnText='Shopping List'
-        icon='shoppinglist_icon.png'
+        pageToLink='shoppinglist'
       />
       <PageJumpBtn
         onClick={() => setDisplay(3)}
         btnText='Library'
-        icon='library_icon.png'
+        pageToLink='library'
       />
     </div>
   );

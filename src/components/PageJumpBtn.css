@@ -1,58 +1,45 @@
 
 
 .page-jump-btn {
-  color: black;
+  color: white;
   height: 150px;
   width: 500px;
   border-radius: 1%;
-  background-color: white;
   margin: 30px;
   display: flex;
   align-items: center;
   padding: 10px;
-  justify-content: space-between;
+  justify-content: center;
+  font-size: 25pt;
 }
 
-.spacer {
-  width: 100px;
+.library {
+  background-image: url('/public/library_bg.webp');
+  background-size: cover;
 }
 
-.button-text {
-  text-align: center;
+.shoppinglist {
+  background-image: url('/public/shoppinglist_bg.jpeg');
+  background-size: cover;
 }
 
-.button-icon {
-  width: 100px;
-  height: 100px;
+.inventory {
+  background-image: url('/public/inventory_bg.webp');
+  background-position: center;
+  background-size: cover;
+}
+
+p {
+  padding: 10px;
+  background-color: rgba(0, 0, 0, .5);
 }
 
 @media only screen and (max-width: 768px) {
 
   .page-jump-btn {
-    color: black;
     height: 10vh;
     min-height: 15vw;
     width: 80vw;
-    border-radius: 1%;
-    background-color: white;
-    margin: 30px;
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    justify-content: space-between;
-  }
-  
-  .spacer {
-    width: 15vw;
-  }
-  
-  .button-text {
-    text-align: center;
   }
 
-  .button-icon {
-    width: 15vw;
-    height: 15vw;
-  }
-  
-  }
+}

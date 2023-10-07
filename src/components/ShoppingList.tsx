@@ -67,6 +67,7 @@ function ShoppingList(props: shoppinglistProps) {
             <SpiceyBtn
               onClick={()=> setShoppingModalIsOpen(true)}
               btnText="Add to Shopping List"
+              icon='add'
             />
             {shoppingModalIsOpen?
               <ShoppingModal
@@ -108,10 +109,12 @@ function ShoppingList(props: shoppinglistProps) {
                   <SpiceyBtn
                     onClick={()=> handleInvModalReveal(index)}
                     btnText='Move to Inventory'
+                    icon='shopping_bag'
                   />
                   <SpiceyBtn
                     onClick={() => handleRemoveClick(index)}
                     btnText='Remove from List'
+                    icon='delete'
                   />
                 </div>
               );
@@ -126,11 +129,12 @@ function ShoppingList(props: shoppinglistProps) {
             <SpiceyBtn
               onClick={()=> setCanEdit(true)}
               btnText="Edit Shopping List"
+              icon="edit_note"
             />
             {shoppingList.map((spice, index) => <p key={index}>{spice.name}</p>)}
           </div>
         }
-      <SpiceyBtn onClick={backToWelcomePage} btnText="Back" />
+      <SpiceyBtn onClick={backToWelcomePage} btnText="Back" icon="arrow_back" />
     </div>
   )
 }

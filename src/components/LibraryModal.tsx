@@ -52,8 +52,8 @@ function LibraryModal( props: modalProps ) {
       <div>
         <ShelfLifePicker shelfLifeDuration={newDuration} setShelfLifeDuration={setNewDuration} />
       </div>
-      <SpiceyBtn onClick={onCancel} btnText={"Cancel"}/>
-      <SpiceyBtn onClick={onSubmit} btnText={"Submit"}/>
+      <SpiceyBtn onClick={onCancel} btnText={"Cancel"} icon='cancel' />
+      <SpiceyBtn onClick={onSubmit} btnText={"Submit"} icon='done' />
     </div>
   );
 }

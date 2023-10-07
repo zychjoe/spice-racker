@@ -4,17 +4,15 @@ import './PageJumpBtn.css'
 interface buttonProps {
   onClick: React.MouseEventHandler<HTMLInputElement>,
   btnText: string,
-  icon: string,
+  pageToLink: string,
 }
 
 function PageJumpBtn( props: buttonProps) {
-  const { onClick, btnText, icon } = props;
+  const { onClick, btnText, pageToLink } = props;
 
   return (
-    <div className='page-jump-btn' onClick={onClick}>
-      <img className='button-icon'src={icon} />
+    <div className={pageToLink + " page-jump-btn"} onClick={onClick}>
       <p className='button-text'>{btnText}</p>
-      <div className='spacer'/>
     </div>
   )
 

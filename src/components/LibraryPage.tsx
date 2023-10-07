@@ -25,7 +25,7 @@ function LibraryPage(props: libraryProps) {
   }
   else {
     modalDisplay = 
-      <SpiceyBtn onClick={()=> setLibModalIsOpen(true)} btnText="Add to Library" />
+      <SpiceyBtn onClick={()=> setLibModalIsOpen(true)} btnText="Add to Library" icon='add' />
   }
 
   return (
@@ -33,7 +33,7 @@ function LibraryPage(props: libraryProps) {
       <h1>Library</h1>
       {modalDisplay}
       {library.map((spice, index) => <p key={index}>{spice.name}</p>)}
-      <SpiceyBtn onClick={backToWelcomePage} btnText="Back" />
+      <SpiceyBtn onClick={backToWelcomePage} btnText="Back" icon='arrow_back' />
     </div>
   )
 }

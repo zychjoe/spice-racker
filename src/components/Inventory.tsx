@@ -32,15 +32,15 @@ function Inventory(props: inventoryProps) {
 
   else {
     modalDisplay =
-      <SpiceyBtn onClick={() => setInvModalIsOpen(true)} btnText="Add a Spice" />
+      <SpiceyBtn onClick={() => setInvModalIsOpen(true)} btnText="Add a Spice" icon='add' />
   }
 
   return (
     <div>
       <h1>Inventory</h1>
       {modalDisplay}
-      {inventory.map((spice, index) => <div><p key={index}>{spice.spice.name}</p><SpiceyBtn onClick={()=>console.log(spice.expDate)} btnText="exp" key={index + 100} /></div>)}
-      <SpiceyBtn onClick={backToWelcomePage} btnText="Back" />
+      {inventory.map((spice, index) => <p key={index}>{spice.spice.name}</p>)}
+      <SpiceyBtn onClick={backToWelcomePage} btnText="Back" icon='arrow_back' />
     </div>
   );
 }

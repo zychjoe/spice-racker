@@ -109,8 +109,8 @@ function InventoryModal( props: modalProps ) {
         </label>
       </div>
       {libraryOption}
-      <SpiceyBtn onClick={onCancel} btnText={"Cancel"}/>
-      <SpiceyBtn onClick={onSubmit} btnText={"Submit"}/>
+      <SpiceyBtn onClick={onCancel} btnText={"Cancel"} icon='cancel' />
+      <SpiceyBtn onClick={onSubmit} btnText={"Submit"} icon='done' />
     </div>
   );
 }
