@@ -43,7 +43,7 @@ function LibraryModal( props: modalProps ) {
 
   return (
     <div className="modal">
-      <h1>Add a Spice</h1>
+      <h1>Add to the Library</h1>
       <div className="library-modal-content">
         <div className="spice-name-input">
           <p> Spice Name: </p>

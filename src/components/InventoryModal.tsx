@@ -100,7 +100,8 @@ function InventoryModal( props: modalProps ) {
   }
 
   return (
-    <div>
+    <div className="modal">
+      <h1>Add to Inventory</h1>
       {spiceSelection}
       <div>
         <label>
@@ -109,8 +110,10 @@ function InventoryModal( props: modalProps ) {
         </label>
       </div>
       {libraryOption}
-      <SpiceyBtn onClick={onCancel} btnText={"Cancel"} icon='cancel' />
-      <SpiceyBtn onClick={onSubmit} btnText={"Submit"} icon='done' />
+      <div className="cancel-submit-bar">
+        <SpiceyBtn onClick={onCancel} btnText={"Cancel"} icon='cancel' />
+        <SpiceyBtn onClick={onSubmit} btnText={"Submit"} icon='done' />
+      </div>
     </div>
   );
 }
