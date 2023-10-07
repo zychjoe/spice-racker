@@ -42,7 +42,7 @@ function LibraryModal( props: modalProps ) {
   }
 
   return (
-    <div>
+    <div className="library-modal">
       <div>
         <label>
           Spice: 

@@ -92,10 +92,10 @@ function InventoryModal( props: modalProps ) {
     }
     else{
       libraryOption = 
-        <div>
-          <p>Or Add a Spice to the Library:</p>
-          <SpiceyBtn onClick={() => setLibModalIsOpen(true)} btnText="Add Spice" />
-        </div>
+        <SpiceyBtn
+          onClick={() => setLibModalIsOpen(true)}
+          btnText="Or Add a Spice to the Library"
+        />
     }
   }
 

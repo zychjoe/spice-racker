@@ -1,7 +1,7 @@
 import InventorySpice from "../interfaces/InventorySpice";
 import SpiceyBtn from "./SpiceyBtn";
 import InventoryModal from "./InventoryModal";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import './Inventory.css';
 import LibrarySpice from "../interfaces/LibrarySpice";
 
@@ -16,6 +16,8 @@ interface inventoryProps {
 function Inventory(props: inventoryProps) {
   const { inventory, setInventory, library, setLibrary, backToWelcomePage } = props;
   const [ invModalIsOpen, setInvModalIsOpen] = useState<boolean>(false);
+
+  setInventory(inventory.sort((a,b) => a.spice.name.localeCompare(b.spice.name)));
 
   let modalDisplay;
 

@@ -29,7 +29,7 @@ function LibraryPage(props: libraryProps) {
   }
 
   return (
-    <div>
+    <div className="library">
       <h1>Library</h1>
       {modalDisplay}
       {library.map((spice, index) => <p key={index}>{spice.name}</p>)}

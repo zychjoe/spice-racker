@@ -14,17 +14,17 @@ function WelcomePage(props: welcomeProps) {
       <PageJumpBtn
         onClick={() => setDisplay(1)}
         btnText='Inventory'
-        pageToLink='inventory'
+        pageToLink='inventory-jump'
       />
       <PageJumpBtn
         onClick={() => setDisplay(2)}
         btnText='Shopping List'
-        pageToLink='shoppinglist'
+        pageToLink='shoppinglist-jump'
       />
       <PageJumpBtn
         onClick={() => setDisplay(3)}
         btnText='Library'
-        pageToLink='library'
+        pageToLink='library-jump'
       />
     </div>
   );

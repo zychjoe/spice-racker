@@ -13,23 +13,23 @@
   font-size: 25pt;
 }
 
-.library {
+.library-jump {
   background-image: url('/public/library_bg.webp');
   background-size: cover;
 }
 
-.shoppinglist {
+.shoppinglist-jump {
   background-image: url('/public/shoppinglist_bg.jpeg');
   background-size: cover;
 }
 
-.inventory {
+.inventory-jump {
   background-image: url('/public/inventory_bg.webp');
   background-position: center;
   background-size: cover;
 }
 
-p {
+.page-jump-btn p {
   padding: 10px;
   background-color: rgba(0, 0, 0, .5);
 }
